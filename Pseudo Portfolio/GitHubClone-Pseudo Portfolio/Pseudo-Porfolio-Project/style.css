@@ -1,0 +1,675 @@
+/*---------------Andy Bell Reset etc code; it's beautiful, it works, yes! Fixed some of my issues----------*/
+/*---------------Go here to get the code:  https://piccalil.li/blog/a-modern-css-reset/ -------------------*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+
+  border: px solid red;
+  margin: ;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*------My code starts here-----------*/
+
+:root {
+  --max-width: 960px;
+  --max-height: 720px;
+  /* https://coolors.co/a2666f-f49390-f45866-c45ab3-631a86   */
+  --primary-color: #f49390; /* natural flesh pink*/
+  --primary-alt-color: #755f5e; /* natural flesh grayed */
+  --secondary-color1: #f45866; /*salmon*/
+  --secondary-color2: #a2666f; /*mauve*/
+  --background-color: #000; /* black */
+  --html-background: rgba(23, 2, 4, 75%);
+  --primary-font: Nunito, san-serif;
+  --secondary-font: Anton, san-serif;
+  --primary-font-color: #fff; /* white */
+  --nav-font-850px: 0.8rem;
+  --header-font: Monoton, san-serif;
+  --project-hdr-font-size: 2rem;
+  --primary-copy-font-size: 1.5rem;
+  --footer-font-850px: 0.70rem;
+  --legal-info-850px: 0.70rem;
+  --cursor: pointer;
+  --letter-spacing: 0.05rem;
+}
+
+html {
+  background: var(--html-background);
+  
+}
+
+body {
+  max-width: var(--max-width);
+  max-height: var(--max-height);
+  font-family: var(--primary-font);
+  letter-spacing: var(--letter-spacing);
+  margin: 0 auto; /*centers content on page when limiting the page width*/
+  
+}
+
+
+/* designed at 850px  */
+
+#main-container-grid {
+  display: grid;
+  grid-template-column: repeat(12, 1fr);
+  grid-template-row: auto;
+  grid-template-area:
+    "icon icon icon nav nav nav nav nav nav nav nav nav"
+    "cnt cnt cnt cnt cnt cnt cnt cnt cnt cnt cnt cnt"
+    "ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr ftr"
+    "legal legal legal legal legal legal legal legal legal legal legal legal"
+    "si si si si si si si si si si si si";
+  
+}
+
+main {
+  grid-area: cnt;
+  max-width: var(--max-width);
+  
+}
+
+li {
+  list-style-type: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  margin: 0 auto; /* instead of left:0 use margin: 0 auto; to center nav on a page with a max-width; not sure why doing this on body doesn't automatically  center to match main content*/
+  width: var(--max-width);
+  background: var(--primary-color);
+
+  border: px solid red;
+}
+
+#navUL {
+  display: flex;
+  width: 100%;
+  height: 11vh; 
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  border: px solid red;
+}
+
+#navUL i {
+  padding: 1rem 0.5rem;
+}
+
+.logo {
+  display: inline-grid;
+  grid-area: icon;
+  margin-right: auto;
+  padding: 0.25rem 0; 
+  cursor: var(--cursor);
+
+  border: px solid red;
+}
+
+#navUL a {
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  cursor: var(--cursor);
+   
+  border: px solid yellow;
+}
+
+#navUL a:hover {
+  margin: 5px 0 0;
+  border-bottom: 5px solid white;
+  }
+
+#navUL li {
+  display: grid;
+  grid-area: nav;
+  margin: 0 auto; /*The margin and padding enable proper spacing of the logo and links*/
+  padding: 0;
+  
+  border: px solid red;
+}
+
+.sections {
+  width: 100%;
+}
+
+/* This pushes the main content area below the nav on initial page load*/
+.welcome-section {
+  margin: 3.5rem auto 0;
+}
+
+#section1 {
+  grid-area: cnt;
+  display: flex;
+  background: var(--secondary-color1);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area:
+    "s1-col1 s1-col2";
+  justify-content: center;
+}
+
+#section1 h1 {
+  font-family: var(--header-font);
+  margin: 0;
+  padding: 3rem 1rem 1rem;
+  
+}
+
+#img-headshot {
+  width: 45%;
+  border-radius: 50%;
+  margin-top: 5rem;
+  margin-left: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(57, 56, 56, 0.75), 0 6px 20px 0 rgb(21, 21, 21);
+  
+  border: px solid red;
+}
+
+#resume {
+  position: absolute;
+  top: 35%;
+  left: 65%;
+  width: 10%;
+  height: 10%;
+  z-index: 2;
+  /*   background: #fff;
+  border-radius: 50%;
+  padding: 4rem 0;
+  text-align: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(57, 56, 56, 0.75), 0 6px 20px 0 rgb(21, 21, 21); */
+  font-size: 0;
+  visibility: invisible;
+  cursor: var(--cursor);      
+}
+
+#resume img  {
+  width: 100%;
+  z-index: 6;
+  padding: 2rem; /*3rem will make the qr code completely invisible but everything will appear when hovered over; this isn't intuitive though so I changed it to 2rem*/
+  box-shadow: 0 4px 8px 0 rgba(57, 56, 56, 0.75), 0 6px 20px 0 rgb(21, 21, 21);
+  border-radius: 10%;
+  background: rgba(244, 147, 144, 30%);
+  border: px solid red;
+}
+
+
+#resume:hover {
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  width: 250px;
+  height: 250px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(57, 56, 56, 0.75), 0 6px 20px 0 rgb(21, 21, 21);
+  display: block;
+}
+
+#resume a {
+  text-decoration: none;
+}
+
+.s1-col2 {
+  margin: 0;
+  padding-bottom: 1rem; /* increases the space below the frontend web dev copy*/
+  color: #fff;
+  font-size: var(--primary-copy-font-size);
+    
+  border: px solid red;
+}
+
+#s1-L1, #s1-L2 {
+  padding-right: 2rem;
+  margin: 0;
+  text-align: end;
+  
+}
+
+#projects {
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: var(--project-hdr-font-size);
+  font-family: var(--header-font);
+  background: var(--primary-alt-color);
+}
+
+.proj-img-width {
+  width: 65%;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(57, 56, 56, 0.75), 0 6px 20px 0 rgb(21, 21, 21);
+  margin: 0.75rem auto 0.75rem 1rem;
+  animation-timing-function: ease-in-out;
+}
+
+/*Moves the project image to the right of the div*/
+.proj-img-link:nth-child(even) img {
+  margin: 0.75rem 1rem 0.75rem auto;
+  border: px solid red;
+}
+
+
+
+.proj-img-width:nth-child(odd):hover {
+  margin: -1rem auto;
+  transform: scale(120%);
+ 
+}
+
+.sections h4:nth-child(odd), .sections p:nth-child(odd) {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.section-layout:nth-child(odd) {
+  text-align: end;
+  
+}
+
+#section2 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s2-col1 s2-col2";
+  background: var(--secondary-color2);
+}
+
+#s2-img1 {
+  grid-area: s2-col1;
+}
+
+
+
+
+#section3 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s3-col1 s3-col2";
+  background: var(--secondary-color1);
+}
+
+#s3-img2 {
+  grid-area: s3-col2;
+  
+}
+
+#section4 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s4-col1 s4-col2";
+  background: var(--secondary-color2);
+}
+
+#s4-img1 {
+  grid-area: s4-col1;
+}
+
+#section5 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s5-col1 s5-col2";
+  background: var(--secondary-color1);
+}
+
+#s5-img2 {
+  grid-area: s5-col2;
+}
+
+#section6 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s6-col1 s6-col2";
+  background: var(--secondary-color2);
+}
+
+#s6-img1 {
+  grid-area: s6-col1;
+}
+
+#section7 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s7-col1 s7-col2";
+  background: var(--secondary-color1);
+}
+
+#s7-img2 {
+  grid-area: s7-col2;
+}
+
+#section8 {
+  grid-area: cnt;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-template-area: 
+    "s8-col1 s8-col2";
+  background: var(--secondary-color2);
+}
+
+#s8-img1 {
+  grid-area: s6-col1;
+}
+
+#s8-img2 {
+  grid-area: s6-col2;
+}
+
+
+h1 {
+  color: linen;
+}
+
+footer {
+  grid-area: ftr;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-row: auto;
+  grid-template-area: "ftr-col1 ftr-col1 ftr-col1 ftr-col2 ftr-col2 ftr-col2 ftr-col3 ftr-col3 ftr-col3 ftr-col4 ftr-col4 ftr-col4";
+  grid-gap: 15%; /*not finding the target to justify content evenly or to widen the columns for some reason*/
+  margin: 0;
+  padding: 2rem 20%;
+  
+/*   width: 100%; */
+  height: 100vh;
+
+  background: var(--html-background);
+  
+  color: var(--primary-font-color);
+
+  border: px solid red;
+}
+
+.ftr-cols {
+  
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  line-height: 2.25rem;
+    
+  border: px solid #e625cf;
+}
+
+.ftrUL {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+   
+ border: px solid green;
+}
+
+h4 {
+  margin: 1rem auto;
+}
+
+.ftrLink {
+  margin: 0.25rem auto;
+  padding: 0.1rem;
+  line-height: 1rem;
+  letter-spacing: 0.15rem;
+  text-align: start;
+  width: 100%;
+  font-size: var(--footer-font-850px);
+  cursor: var(--cursor);
+
+  border: px solid yellow;
+}
+
+.ftrLink:hover {
+  color: var(--secondary-color1);
+}
+
+#contact {
+  padding: 1rem;
+  background: var(--primary-alt-color);
+}
+
+#contact h2 {
+  font-family: var(--header-font);
+  color: white;
+  letter-spacing: 0.5rem;
+}
+
+fieldset {
+  border: none;
+}
+
+input {
+  border-radius: 5px;
+  margin: 0 3%;
+  
+  border: px solid red;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#submit {
+  margin: 0 45%; /*not sure why % works but auto doesn't....*/
+  
+  border: px solid yellow;
+}
+
+form input[type="submit"] {
+
+  margin: 0 auto;
+  text-align: center;
+  cursor: var(--cursor);
+  border: px solid red;
+  
+}
+
+#legal {
+  diplay: flex;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+  justify-content: space-evenly;
+  background: var(--html-background);
+
+  border: px solid red;
+}
+
+.legalInfo {
+  grid-area: legal;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--secondary-color2);
+  font-size: var(--legal-info-850px);
+  border-radius: 30px;
+  cursor: pointer;
+  
+  border: px solid red;
+}
+
+.legalInfo:hover {
+  background: var(--secondary-color1);
+}
+
+.legalUL {
+  display: flex;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  justify-content: space-evenly;
+  
+  color: var(--primary-font-color);
+  letter-spacing: 0.25rem;
+
+  border: px solid yellow;
+}
+
+i {
+  color: #edd5f5; /*light pink*/
+  font-size: 1rem;
+  padding: 0.25rem 0;
+  border: px solid red;
+}
+
+i:hover {
+  color: var(--secondary-color2);
+  
+  }
+
+#social-icons {
+  grid-area: si;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0.25rem 0;
+  background: black;
+  opacity: 75%;
+
+  border: px solid red;
+}
+
+#social-icons a {
+  color: #edd5f5; /*light pink*/
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  padding: 0 0.5rem; /*stops the page from bouncing when the link is hovered over*/
+}
+
+#social-icons a:hover {
+  color: var(--secondary-color1); 
+  padding: 0 0.45rem;
+  letter-spacing: 0.15rem;/* reduces the size of the link when the border is added on hover */
+}
+
+@media only screen and (max-width: 900px) {
+  
+  #social-icons a {
+    font-size: 0;
+  }
+  
+  #social-icons a:hover {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    border: none;
+  }
+  
+  i {
+   padding: 0;
+    text-align: center;
+   color: #edd5f5; /*light pink*/
+  font-size: 1rem;
+  padding: 1rem 0 1rem 1rem;
+    
+  }
+  
+  i:hover {
+    font-size: 1rem;
+  }
+    
+}
+
+/* Testing Area */
+/* * {
+  outline: 1px solid;
+}
+
+div {
+  outline: px solid;
+} */
